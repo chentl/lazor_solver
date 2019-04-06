@@ -13,3 +13,5 @@ Missing functions:
 The loader and solver are running smoothly, however there are multiple issues that can be addressed and solved:
   - the function *get_possible_combs_perm* returns more than needed combinations, this can be due to sorting issues
   - possibly after commiting the image loader, merge with the bff_loader to take input as either bff file or image
+
+Finally, we need to wrap all functions into a class once the missing functinos are added.
