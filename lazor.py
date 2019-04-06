@@ -6,6 +6,11 @@ import numpy as np
 import random
 import time
 import os
+from pylazors.formats.png import write_png
+from pylazors.formats.bff import read_bff, bff_block_map
+from pylazors.solver import trace_lasers
+from pylazors.board import Board
+from pylazors.blocks import Block, unfix_block
 
 '''
 Lazor Project
@@ -460,12 +465,48 @@ def pos_chk(x, y, data_grid):
     return x >= 0 and x < x_dim and y >= 0 and y < y_dim
 
 
+def solution_to_png(solution, bff_fname, png_fname):
+    '''
+    Export solution as a PNG Image.PNG
+
+    This code is in a early verion. It just read the original BFF
+    file into a <Board> object, replace blocks by *solution*. Run 
+    trace_lasers to get laser paths, and call write_png.and
+
+    #TODO: Instead of tracing laser again, just extract laser info
+    from lazor_solve()
+    '''
+
+    board = read_bff(bff_fname)
+    width, height = board.width, board.height
+
+    # Because in solution 'A', 'B', and 'C' may represent fixed or
+    # unfixed blocks, use original board from BFF file to find out
+    # which block is unfixed.
+    original_blocks = board.get_blocks()
+    solution_blocks = [[bff_block_map[b] for b in row] for row in solution]
+    for x in range(width):
+        for y in range(height):
+            if original_blocks[y][x] != solution_blocks[y][x]:
+                board.mod_block(x, y, unfix_block(solution_blocks[y][x]))
+
+    # Run laser-tracing on solution board
+    laser_segs = trace_lasers(board.get_blocks(), board.get_lasers())
+    board.load_laser_segments(laser_segs)
+
+    # Write to PNG
+    write_png(board, png_fname)
+
+
 # Test and optimization utilities unit
 if __name__ == "__main__":
-    files = os.listdir('./bff')
+    if not os.path.exists('solutions'):
+        os.makedirs('solutions')
+
+    files = os.listdir('./boards/handout')
     for file in files:
-        print("-------------------------------------------")
-        fptr = os.path.join('bff', file)
+        print("--------------- solving %s -----------------" % file)
+        fptr = os.path.join('./boards/handout', file)
         data = lazor_load_bff(fptr)
         trial_number = 1
         durations = []
@@ -477,3 +518,7 @@ if __name__ == "__main__":
         print(solution)
         print('PERFORMANCE')
         print('     Avg: %.3f, Low: %.3f, High: %.3f' % (sum(durations) / len(durations), min(durations), max(durations)))
+
+        png_fname = os.path.join('./solutions', file.split('.')[0])
+        solution_to_png(solution, fptr, png_fname)
+
