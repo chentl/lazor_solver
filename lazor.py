@@ -12,7 +12,7 @@ Lazor Project
 
 **Functions**
 
-        lazor_load_bff: 
+        lazor_load_bff:
             load bff file to be read and manipulated by other functions
 
         lazor_solve:
@@ -474,6 +474,6 @@ if __name__ == "__main__":
             t0 = time.time()
             solution = lazor_solve(data)
             durations.append(time.time() - t0)
-        # print(solution)
+        print(solution)
         print('PERFORMANCE')
         print('     Avg: %.3f, Low: %.3f, High: %.3f' % (sum(durations) / len(durations), min(durations), max(durations)))
