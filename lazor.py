@@ -503,10 +503,10 @@ if __name__ == "__main__":
     if not os.path.exists('solutions'):
         os.makedirs('solutions')
 
-    files = os.listdir('./boards/handout')
+    files = os.listdir(os.path.join('boards', 'handout'))
     for file in files:
         print("--------------- solving %s -----------------" % file)
-        fptr = os.path.join('./boards/handout', file)
+        fptr = os.path.join('boards', 'handout', file)
         data = lazor_load_bff(fptr)
         trial_number = 1
         durations = []
@@ -519,6 +519,6 @@ if __name__ == "__main__":
         print('PERFORMANCE')
         print('     Avg: %.3f, Low: %.3f, High: %.3f' % (sum(durations) / len(durations), min(durations), max(durations)))
 
-        png_fname = os.path.join('./solutions', file.split('.')[0])
+        png_fname = os.path.join('solutions', file.split('.')[0])
         solution_to_png(solution, fptr, png_fname)
 
