@@ -505,6 +505,9 @@ if __name__ == "__main__":
 
     files = os.listdir(os.path.join('boards', 'handout'))
     for file in files:
+        if not file.endswith('.bff'):
+            continue
+
         print("--------------- solving %s -----------------" % file)
         fptr = os.path.join('boards', 'handout', file)
         data = lazor_load_bff(fptr)
