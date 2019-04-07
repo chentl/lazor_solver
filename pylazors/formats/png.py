@@ -5,10 +5,12 @@ import pylazors.formats as pylazors_formats
 
 
 _BLOCK_SIZE = 256
+_TEXTURE_DIR = os.path.join(os.path.dirname(pylazors_formats.__file__), 'textures')
+_FONT_DIR = os.path.join(os.path.dirname(pylazors_formats.__file__), 'fonts')
 
 
 def _load_texture(fname, size=_BLOCK_SIZE):
-    img = Image.open(os.path.join(os.path.dirname(pylazors_formats.__file__), 'textures', fname))
+    img = Image.open(os.path.join(_TEXTURE_DIR, fname))
     return img.convert('RGBA').resize((size, size))
 
 
@@ -27,10 +29,28 @@ _other_textures = {
     'target_hit': _load_texture('target_hit.png', size=_BLOCK_SIZE // 5 * 4),
 }
 
-_font_file = os.path.join(os.path.dirname(pylazors_formats.__file__), 'fonts/SourceCodeVariable-Roman.ttf')
+_font_file = os.path.join(_FONT_DIR, 'SourceCodeVariable-Roman.ttf')
 
 
 def write_png(board, fname, note=None):
+    '''
+    Write *board* as a PNG image.
+
+        **Parameters**
+
+        board: *pylazors.board.Board*
+            The board to be exported.
+        fname: *str*
+            file name of the destined PNG file.
+        note: *str, optional*
+            If given, will be added at the bottom of the image.
+
+    **Returns**
+
+        None
+
+    '''
+
     if not fname.endswith('.png'):
         fname += '.png'
 
@@ -97,8 +117,3 @@ def write_png(board, fname, note=None):
 
     img = img.resize((img_size[0] // 2, img_size[1] // 2), Image.LANCZOS)
     img.save(fname)
-
-
-
-
-

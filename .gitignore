@@ -6,9 +6,6 @@ __pycache__/
 # PyCharm
 .idea/
 
-# export
-boards/export/*
-
 # Solutions
 solutions*
 

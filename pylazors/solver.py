@@ -2,10 +2,28 @@ from pylazors.board import Board
 from pylazors.blocks import Block
 
 
-def trace_lasers(blocks, lasers, with_outbound_lasers=False):
+def trace_lasers(blocks, lasers):
+    ''' Trace lasers on board and return all laser paths.
+        **Parameters**
+
+        blocks: *list, list*
+            A list of lists holding all blocks on board. Format should be
+            same as the the return of pylazors.board.Board.get_blocks()
+            [[<Block>, <Block>, ...], ...]
+        lasers: *list, tuple*
+            A list of tuples holding all laser sources. Format should be
+            same as the the return of pylazors.board.Board.get_lasers().
+            [(x, y, vx, vy), ...]
+
+    **Returns**
+
+        laser_segments: *list, tuple*
+            A list of tuples holding all segments on laser path.
+            [(x0, y0, x1, y1), ...]
+    '''
+
     laser_history = set(lasers)
     laser_segments = []
-    outbound_lasers = []
     width, height = len(blocks[0]), len(blocks)
 
     while len(lasers):
@@ -18,8 +36,6 @@ def trace_lasers(blocks, lasers, with_outbound_lasers=False):
             bx = x // 2
             by = y // 2 - (0 if vy > 0 else 1)
         if bx < 0 or by < 0 or bx >= width or by >= height:
-            if with_outbound_lasers:
-                outbound_lasers.append((x, y, vx, vy))
             continue
         block_to_check = blocks[by][bx]
 
@@ -37,7 +53,4 @@ def trace_lasers(blocks, lasers, with_outbound_lasers=False):
                 lasers.append(new_laser)
                 laser_history.add(new_laser)
 
-    if with_outbound_lasers:
-        return laser_segments, outbound_lasers
-    else:
-        return laser_segments
+    return laser_segments

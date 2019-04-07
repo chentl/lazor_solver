@@ -18,7 +18,9 @@ class IllegalSyntaxError(Exception):
     pass
 
 
-def read_bff(fname: str):
+def read_bff(fname):
+    ''' Read BFF file *fname*, return a pylazors.board.Board object. '''
+
     with open(fname, 'r') as f:
         bff_content = f.read()
 
@@ -73,7 +75,9 @@ def read_bff(fname: str):
     return board
 
 
-def write_bff(board: Board, fname: str):
+def write_bff(board, fname):
+    ''' Save *board* (a pylazors.board.Board object) as a BFF file '''
+
     board = board.copy(with_laser_segs=False)
     board.clean_board()
     blocks = board.get_blocks()

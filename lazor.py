@@ -467,11 +467,11 @@ def pos_chk(x, y, data_grid):
 
 def solution_to_png(solution, bff_fname, png_fname):
     '''
-    Export solution as a PNG Image.PNG
+    Export solution as a PNG Image.
 
     This code is in a early verion. It just read the original BFF
-    file into a <Board> object, replace blocks by *solution*. Run 
-    trace_lasers to get laser paths, and call write_png.and
+    file into a <Board> object, replace blocks by *solution*. Run
+    trace_lasers to get laser paths, and call write_png.
 
     #TODO: Instead of tracing laser again, just extract laser info
     from lazor_solve()
