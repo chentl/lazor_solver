@@ -15,6 +15,9 @@ from pylazors.blocks import Block, unfix_block
 '''
 Lazor Project
 
+**Description**
+
+
 **Functions**
 
         lazor_load_bff:
@@ -39,8 +42,8 @@ Lazor Project
             positions checker to confirm point is in grid
 
 **bff file info**
-        Grid: either one of the following, must start and end with 
-            flags GRID START, and GRID STOP
+        Grid: contains blocks with values as the following, and it must start
+        and end with two lines of flags GRID START and GRID STOP
           x = no block allowed [0]
           o = blocks allowed [0]
           A = fixed reflect block [2]
@@ -101,7 +104,6 @@ Lazor Project
                           [('A', (0, 0)), ('A', (1, 0)), ('A', (2, 0)), ('A', (3, 0)), ('A', (4, 0)), ('A', (2, 1))],
                           ....
                           [('A', (4, 3)), ('A', (0, 4)), ('A', (1, 4)), ('A', (2, 4)), ('A', (3, 4)), ('A', (4, 4))]]
-            
 
 '''
 
@@ -154,7 +156,7 @@ def lazor_load_bff(inp):
     return letter_grid, blocks, lazers, points, [A, B, C]
 
 
-def lazor_solve(data):
+def lazor_solve(data, solve_limit=1E5):
     '''
     lazor (game) solver
 
@@ -163,6 +165,10 @@ def lazor_solve(data):
         data: *list* {*np.array*, *list*, *list*, *list*}
             numpy array of letter_grid, lists of movealbe blocks letters,
             lazer positions and directions, and target points positions
+
+        solve_limit: *optional, integer*
+            the maximum number of combinations allowed. if exceeded, the function
+            returns None. if 0 -> no limit.
 
     **Returns**
 
@@ -176,8 +182,12 @@ def lazor_solve(data):
 
     # calculate the number of moveable blocks and available positions [debug]
     n_blocks, n_pos = len(blocks), len(available_positions)
-    # print the number of unique combinations
-    print(factorial(n_pos) / (factorial(n_pos - n_blocks) * factorial(block_counts[0]) * factorial(block_counts[1]) * factorial(block_counts[2])))
+    # calculate the number of unique combinations or possible combinations
+    unique_combinations = factorial(n_pos) / (factorial(n_pos - n_blocks) * factorial(block_counts[0]) * factorial(block_counts[1]) * factorial(block_counts[2]))
+
+    if (unique_combinations > solve_limit and solve_limit != 0):
+        print("skipped: too many combinations! (%i)" % unique_combinations)
+        return None
 
     unique_blocks = 0
 
@@ -185,20 +195,17 @@ def lazor_solve(data):
         if bc > 0:
             unique_blocks += 1
 
-    # print(unique_blocks)
-
-    # if the number of block types is 1, user combinations, otherwise use the modified functions
+    # if the number of block types is 1, use combinations, otherwise use the modified functions
     if unique_blocks == 1:
         t0 = time.time()
         possible_combs = [zip(blocks, x) for x in combinations(available_positions, len(blocks))]
-        print("%i permutations generated in %.3f s" % (len(possible_combs), time.time() - t0))
+        print("%i combinations generated in %.3f s" % (len(possible_combs), time.time() - t0))
     elif unique_blocks > 1:
         t0 = time.time()
-        # possible_combs = [zip(blocks, x) for x in combinations(available_positions, len(blocks))]
         possible_combs = get_possible_combs_perm(blocks, available_positions)
         print("%i permutations generated in %.3f s" % (len(possible_combs), time.time() - t0))
 
-    c = 1
+    iter_num = 1
     # Iterate a random combination each time and turn lazor on
     for comb_number in range(len(possible_combs)):
         comb_ind = random.randint(0, len(possible_combs) - 1)
@@ -212,14 +219,12 @@ def lazor_solve(data):
 
         data_grid = get_data_grid(i_grid, points)
         data_grid_w_lazer_on = lazor_on(data_grid, lazers)
-        # print(i_grid)
-        # print(data_grid_w_lazer_on)
 
         # stop if solution is found [if no 9 is in data_grid]
         if not any([point == 9 for row in data_grid_w_lazer_on for point in row]):
-            print("Solution found in %i iterations" % (c))
+            print("Solution found in %i iterations" % (iter_num))
             return i_grid
-        c += 1
+        iter_num += 1
 
     print("No solution found!")
 
@@ -253,14 +258,19 @@ def get_possible_combs_perm(blocks, available_positions):
     j_perm = {frozenset(j) for j in j_perm}
     j_perm = [list(i) for i in j_perm]
 
-    possible_combs = []
+    possible_combs = j_perm
 
-    for comb in j_perm:
-        if len(comb) == num_avail_blocks:
-            comb = sorted(comb, key=itemgetter(0, 1))
-            if comb not in possible_combs:
-                possible_combs.append(comb)
-                # print(comb)
+    # below is used to eliminate identical combination with diffirent sorting
+    # by sorting them. However, it is time consuming compared to iterating through
+    # the solver
+    #
+    # t0 = time.time()
+    # for comb in j_perm:
+    #     if len(comb) == num_avail_blocks:
+    #         comb = sorted(comb, key=itemgetter(0, 1))
+    #         if comb not in possible_combs:
+    #             possible_combs.append(comb)
+    # print("   k_perm time: %.5f seconds" % (time.time() - t0))
 
     return possible_combs
 
@@ -290,7 +300,7 @@ def get_available_positions(letter_grid):
 
 def get_data_grid(letter_grid, points):
     '''
-    Convert letter grid into data grid and include target points
+    Convert letter grid into data grid and include target points.
 
     **Parameters**
 
@@ -304,6 +314,31 @@ def get_data_grid(letter_grid, points):
 
         data_grid: *np.array*
             converted data grid
+
+    **Example**
+        inputs:
+            letter_grid = [['o' 'o' 'A' 'o' 'o']
+                           ['o' 'o' 'o' 'A' 'o']
+                           ['A' 'o' 'A' 'o' 'x']
+                           ['o' 'o' 'o' 'A' 'o']
+                           ['o' 'o' 'A' 'o' 'o']]
+
+            points = [['6', '3'], ['6', '5'], ['6', '7'], ['2', '9'], ['9', '6']]
+
+        returns:
+
+            data_grid = [[ 0.  0.  0.  0.  2.  2.  2.  0.  0.  0.  0.]
+                         [ 0.  0.  0.  0.  2.  2.  2.  0.  0.  0.  0.]
+                         [ 0.  0.  0.  0.  2.  2.  2.  2.  2.  0.  0.]
+                         [ 0.  0.  0.  0.  0.  0.  9.  2.  2.  0.  0.]
+                         [ 2.  2.  2.  0.  2.  2.  2.  2.  2.  0.  0.]
+                         [ 2.  2.  2.  0.  2.  2.  9.  0.  0.  0.  0.]
+                         [ 2.  2.  2.  0.  2.  2.  2.  2.  2.  9.  0.]
+                         [ 0.  0.  0.  0.  0.  0.  9.  2.  2.  0.  0.]
+                         [ 0.  0.  0.  0.  2.  2.  2.  2.  2.  0.  0.]
+                         [ 0.  0.  9.  0.  2.  2.  2.  0.  0.  0.  0.]
+                         [ 0.  0.  0.  0.  2.  2.  2.  0.  0.  0.  0.]]
+
     '''
     x_dim, y_dim = 2 * len(letter_grid) + 1, 2 * len(letter_grid[0]) + 1
     data_grid = np.zeros(shape=(x_dim, y_dim))
@@ -345,9 +380,16 @@ def get_data_grid(letter_grid, points):
     return data_grid
 
 
-def lazor_on(data_grid, lazers):
+def lazor_on(data_grid, lazers, MAXITER=100):
     '''
-    Validate if the coordinates specified (x and y) are within the maze.
+    lazor solver algorithm. The algorithm works by taking the data grid and iterate
+        through each laser pointer. For each laser:
+                - Determine if the incident position is on the side or top of block.
+                  This is done to set the reflection of the laser (its direction)
+                - Determine the neighbor block position and its type. To escape laser
+                  trapping.
+                - Based on the incident and other positions and their type, take action
+                  as described below.
 
     **Parameters**
 
@@ -366,11 +408,12 @@ def lazor_on(data_grid, lazers):
     '''
     laz_grid = data_grid.copy()
     lazs = list(lazers)
+
     for lazer in lazs:
         pos = [int(lazer[0]), int(lazer[1])]
         lazer_vector = [int(lazer[2]), int(lazer[3])]
-
-        while True:
+        i = 0
+        while i < MAXITER:
             # determine if on side or t/b
             # in each case, get the values of neighbors' center of blocks
             # proceed according to the values (i.e. 2, 4, 6)
@@ -434,8 +477,12 @@ def lazor_on(data_grid, lazers):
                 else:
                     lazer_vector_temp = list(lazer_vector)
                     lazer_vector_temp[reflection] = -1 * lazer_vector_temp[reflection]
-                    lazs.append([pos[0], pos[1], lazer_vector_temp[0], lazer_vector_temp[1]])
+                    lz_ref = [pos[0], pos[1], lazer_vector_temp[0], lazer_vector_temp[1]]
+                    if lz_ref not in lazs:
+                        lazs.append(lz_ref)
                     pos = [pos[0] + lazer_vector[0], pos[1] + lazer_vector[1]]
+            # print(laz_grid)
+            i += 1
 
     return laz_grid
 
@@ -503,25 +550,19 @@ if __name__ == "__main__":
     if not os.path.exists('solutions'):
         os.makedirs('solutions')
 
-    files = os.listdir(os.path.join('boards', 'handout'))
+    files = os.listdir(os.path.join('boards', 'all'))
     for file in files:
         if not file.endswith('.bff'):
             continue
 
-        print("--------------- solving %s -----------------" % file)
-        fptr = os.path.join('boards', 'handout', file)
+        print("--------------- Solving: %s -----------------" % file)
+        fptr = os.path.join('boards', 'all', file)
         data = lazor_load_bff(fptr)
-        trial_number = 1
-        durations = []
-        for i in range(trial_number):
-            # print(i)
-            t0 = time.time()
-            solution = lazor_solve(data)
-            durations.append(time.time() - t0)
+        t0 = time.time()
+        solution = lazor_solve(data, solve_limit=1E6)
         print(solution)
-        print('PERFORMANCE')
-        print('     Avg: %.3f, Low: %.3f, High: %.3f' % (sum(durations) / len(durations), min(durations), max(durations)))
+        print(' Solver Performance: %.5f seconds' % (time.time() - t0))
 
         png_fname = os.path.join('solutions', file.split('.')[0])
-        solution_to_png(solution, fptr, png_fname)
-
+        if solution is not None:
+            solution_to_png(solution, fptr, png_fname)
