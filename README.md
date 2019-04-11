@@ -7,8 +7,9 @@ module to solve for board puzzles of the "Lazors" game in Android and iOS
 
 Underdevelopment:
   - Image loader of board to solve
-      the initial image processessing can yield the following, wondering if Template Matching can work here?
-      <img src="/utilites/img_reader/Mad_7.jpg" alt="drawing" width="200"/> ---> <img src="/utilites/img_reader/Result_IMAGE.png" alt="drawing" width="200"/>
+  the initial image processessing can yield the following, wondering if Template Matching can work here?
+  
+  <img src="/utilites/img_reader/Mad_7.jpg" alt="drawing" width="200"/> ---> <img src="/utilites/img_reader/Result_IMAGE.png" alt="drawing" width="200"/>
 
     
 
