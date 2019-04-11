@@ -1,14 +1,16 @@
-Last update: April 6, 2019 19:53
+Last update: April 10, 2019 23:50
 
 ***** This readme file will be used as 'project status' unitl the code is complete and robust *****
 
 # lazor_solver
 module to solve for board puzzles of the "Lazors" game in Android and iOS
 
-Missing functions:
-  - image loader of board to solve
-  - image exporter of solved board
+Underdevelopment:
+  - Image loader of board to solve
+      the initial image processessing can yield the following, wondering if Template Matching can work here?
+      <img src="/utilites/img_reader/Mad_7.jpg" alt="drawing" width="200"/> ---> <img src="/utilites/img_reader/Result_IMAGE.png" alt="drawing" width="200"/>
 
+    
 
 The loader and solver are running smoothly, however there are multiple issues that can be addressed and solved:
   - the function *get_possible_combs_perm* returns more than needed combinations, this can be due to sorting issues
