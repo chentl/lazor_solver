@@ -8,9 +8,8 @@ import time
 import os
 from pylazors.formats.png import write_png
 from pylazors.formats.bff import read_bff, bff_block_map
-from pylazors.solver import trace_lasers
 from pylazors.board import Board
-from pylazors.blocks import Block, unfix_block
+from pylazors.block import Block, unfix_block
 
 '''
 Lazor Project

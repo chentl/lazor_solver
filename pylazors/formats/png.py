@@ -1,4 +1,4 @@
-from pylazors.blocks import *
+from pylazors.block import *
 from PIL import Image, ImageDraw, ImageFont
 import os
 import pylazors.formats as pylazors_formats

@@ -1,5 +1,5 @@
 from pylazors.board import Board
-from pylazors.blocks import *
+from pylazors.block import *
 import os
 
 bff_block_map = {'o': Block.BLANK,
