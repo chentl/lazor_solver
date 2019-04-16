@@ -1,4 +1,5 @@
 from pylazors.utils import deepcopy
+from pylazors.block import Block
 
 
 class Board:

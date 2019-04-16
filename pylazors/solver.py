@@ -544,6 +544,10 @@ def solution_to_png(solution, bff_fname, png_fname):
     write_png(board, png_fname)
 
 
+def solve_board():
+    pass
+
+
 # Test and optimization utilities unit
 if __name__ == "__main__":
     if not os.path.exists('solutions'):
