@@ -19,60 +19,51 @@ class IllegalSyntaxError(Exception):
 
 
 def read_bff(fname):
-    ''' Read BFF file *fname*, return a pylazors.board.Board object. '''
+    '''
+    Load lazor data from a bff file
 
-    with open(fname, 'r') as f:
-        bff_content = f.read()
+    **Parameters**
 
-    board_name = os.path.splitext(os.path.basename(fname))[0]
+        inp: *string*
+            path to bff file to be read and parsed
 
-    grid_flag = False
-    grid = []
-    line_no = 0
-    for line in bff_content.split('\n'):
-        line_no += 1
-        line = line.split('#', 1)[0]
+    **Returns**
 
-        if len(line.strip()) == 0:
-            continue
+        valid: *np.array*, *list*, *list*, *list*, *list*
+            a numpy array of the grid in letters, and lists of movealbe blocks,
+            lazer positions and directions, and target points positions, and
+            the number of each block [A, B, C]
+    '''
+    letter_grid, blocks, lazers, points, A, B, C = [], [], [], [], 0, 0, 0
 
-        if grid_flag:
-            if line.rstrip() == 'GRID STOP':
-                grid_flag = False
-                grid_width = len(grid[0])
-                grid_height = len(grid)
-                board = Board(board_name, grid_width, grid_height)
+    with open(inp) as lazor_file:
+        grid_switch = False
+        for line in lazor_file:
+            if line.strip() == "GRID START":
+                grid_switch = True
+            elif line.strip() == "GRID STOP":
+                grid_switch = False
+            elif grid_switch:
+                letter_grid.append(line.strip().split())
+            elif (line.strip()).split(" ")[0] == "A":
+                A = int((line.strip()).split(" ")[1])
+                for a in range(A):
+                    blocks.append('A')
+            elif (line.strip()).split(" ")[0] == "B":
+                B = int((line.strip()).split(" ")[1])
+                for b in range(B):
+                    blocks.append('B')
+            elif (line.strip()).split(" ")[0] == "C":
+                C = int((line.strip()).split(" ")[1])
+                for c in range(C):
+                    blocks.append('C')
+            elif (line.strip()).split(" ")[0] == "L":
+                lazers.append((line.strip()).split(" ")[1:])
+            elif (line.strip()).split(" ")[0] == "P":
+                points.append((line.strip()).split(" ")[1:])
+    letter_grid = np.array(letter_grid)
 
-                for y in range(grid_height):
-                    if len(grid[y]) != grid_width:
-                        raise IllegalSyntaxError
-                    for x in range(grid_width):
-                        try:
-                            board.mod_block(x, y, bff_block_map[grid[y][x]])
-                        except KeyError:
-                            raise UnknownSymbolError
-
-            else:
-                grid.append(line.strip().split())
-        elif line.rstrip() == 'GRID START':
-            grid_flag = True
-        else:
-            items = line.strip().split()
-            name, value = items[0], items[1:]
-            if name == 'P':
-                assert len(value) == 2
-                board.add_point(int(value[0]), int(value[1]))
-            elif name == 'L':
-                assert len(value) == 4
-                x, y, vx, vy = list(map(int, value))
-                board.add_laser(x, y, vx, vy)
-            elif name in bff_block_map:
-                assert len(value) == 1
-                board.add_available_blocks(unfix_block(bff_block_map[name]), int(value[0]))
-            else:
-                raise UnknownSymbolError(name)
-
-    return board
+    return letter_grid, blocks, lazers, points, [A, B, C]
 
 
 def write_bff(board, fname):
