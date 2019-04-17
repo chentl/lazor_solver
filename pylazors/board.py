@@ -6,6 +6,7 @@ This file contains classes used for describing a board.
 
 from pylazors.utils import deepcopy
 from pylazors.block import Block
+from math import factorial
 
 
 class Board:
@@ -139,6 +140,19 @@ class Board:
             for y in range(self.height):
                 if not self.get_block(x, y).is_fixed():
                     self.mod_block(x, y, Block.BLANK)
+                    
+    def get_estimate_complexity(self):
+        """ Return estimate complexity represent by an integer """
+        available_blocks = self.get_available_blocks()
+        num_pos = self.get_movable_blocks_num()
+        num_blocks = len(available_blocks)
+        num_opaque = available_blocks.count(Block.OPAQUE)
+        num_reflect = available_blocks.count(Block.REFLECT)
+        num_refract = available_blocks.count(Block.REFRACT)
+        
+        # from solver.py
+        return int(factorial(num_pos) / (factorial(num_pos - num_blocks) * 
+               factorial(num_opaque) * factorial(num_reflect) * factorial(num_refract)))
 
     def copy(self, with_blocks=True, with_laser_sources=True, with_targets=True,
              with_available_blocks=True, with_laser_segments=True):

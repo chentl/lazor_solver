@@ -38,16 +38,40 @@ Finally, we need to wrap all functions into a class once the missing functinos a
 
 ## Performance
 
-for boards in `boards/handout`:
+Following performance benchmarks were obtained using a quad-core 2.6 GHz processor.
 
-```
-[solve_all] 8 boards solved in 11.155 seconds (min/avg/max 0.001/1.394/6.208).
-[solve_all] 5 slowest boards: yarn_5 (6.2s), mad_7 (4.5s), numbered_6 (0.2s), mad_4 (0.1s), mad_1 (0.1s)
-```
+#### Serial
 
-for boards in `boards/all`:
+- for boards in `boards/handout`:
 
-```
-[solve_all] 157 boards solved in 732.311 seconds (min/avg/max 0.000/4.664/250.364).
-[solve_all] 5 slowest boards: showstopper_9 (250.4s), grande_10 (142.1s), diagonal_10 (117.9s), showstopper_10 (69.3s), grande_9 (22.1s)
-```
+    ```
+	solved 8 boards, total wall time: 12.10s. 
+	CPU time: 10.955 seconds (min/avg/max 0.002/1.369/5.779). 
+	5 slowest boards: yarn_5 (5.8s), mad_7 (4.5s), showstopper_4 (0.2s), numbered_6 (0.2s), mad_4 (0.1s)
+    ```
+
+- for boards in `boards/all`:
+
+    ```
+	solved 157 boards, total wall time: 715.65s. 
+	CPU time: 692.290 seconds (min/avg/max 0.000/4.409/226.741). 
+	5 slowest boards: showstopper_9 (226.7s), grande_10 (132.5s), diagonal_10 (115.9s), showstopper_10 (59.5s), grande_9 (18.2s)
+    ```
+
+#### Parallel (using 4 processes)
+
+- for boards in `boards/handout`:
+
+    ```
+	solved 8 boards, total wall time: 6.19s.
+	CPU time: 11.375 seconds (min/avg/max 0.001/1.422/5.971).
+	5 slowest boards: yarn_5 (6.0s), mad_7 (4.6s), numbered_6 (0.3s), showstopper_4 (0.2s), mad_4 (0.2s)
+    ```
+
+- for boards in `boards/all`:
+
+    ```
+	solved 157 boards, total wall time: 283.41s.
+	CPU time: 157 boards solved in 898.729 seconds (min/avg/max 0.001/5.724/283.186).
+	5 slowest boards: showstopper_9 (283.2s), grande_10 (173.9s), diagonal_10 (146.6s), showstopper_10 (67.1s), grande_9 (27.5s)
+    ```

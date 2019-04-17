@@ -160,7 +160,7 @@ def _block_combinations(available_locations, num_opaque, num_reflect, num_refrac
                 yield loc_opaque, loc_reflect, None, skip_opaque_count, skip_reflect_count
 
 
-def _solve_large_board(board):
+def _solve_large_board(board, print_log=True):
     """ Solve a Lazors Board.
         **Parameters**
 
@@ -234,8 +234,9 @@ def _solve_large_board(board):
         if all([p in all_points_on_path for p in targets]):
             solution_board.load_laser_segments(laser_segments)
             solution_board.load_blocks(blocks)
-            print('[solve_large_board] # of tested boards: %d' % i)
-            print('[solve_large_board] # of skipped combinations: %d (opaque), %d (reflect)' %
-                  (skip_opaque_count, skip_reflect_count))
+            if print_log:
+                print('[solve_large_board] # of tested boards: %d' % i)
+                print('[solve_large_board] # of skipped combinations: %d (opaque), %d (reflect)' %
+                      (skip_opaque_count, skip_reflect_count))
             return solution_board
     return None

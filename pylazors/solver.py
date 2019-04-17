@@ -53,7 +53,7 @@ from pylazors.formats.bff import bff_block_map, block_bff_map
 from pylazors._solver import _solve_large_board, _trace_lasers
 
 
-def _solve_board(board, solve_limit=1E5):
+def _solve_board(board, solve_limit=1E5, print_log=True):
     """
     lazor (game) solver
 
@@ -101,11 +101,13 @@ def _solve_board(board, solve_limit=1E5):
     if unique_blocks == 1:
         t0 = time.time()
         possible_combs = [zip(blocks, x) for x in combinations(available_positions, len(blocks))]
-        print("[solve_board] %i combinations generated in %.3f s" % (len(possible_combs), time.time() - t0))
+        if print_log:
+            print("[solve_board] %i combinations generated in %.3f s" % (len(possible_combs), time.time() - t0))
     elif unique_blocks > 1:
         t0 = time.time()
         possible_combs = get_possible_combs_perm(blocks, available_positions)
-        print("[solve_board] %i permutations generated in %.3f s" % (len(possible_combs), time.time() - t0))
+        if print_log:
+            print("[solve_board] %i permutations generated in %.3f s" % (len(possible_combs), time.time() - t0))
 
     iter_num = 1
     # Iterate a random combination each time and turn lazor on
@@ -124,7 +126,8 @@ def _solve_board(board, solve_limit=1E5):
 
         # stop if solution is found [if no 9 is in data_grid]
         if not any([point == 9 for row in data_grid_w_lazer_on for point in row]):
-            print("[solve_board] Solution found in %i iterations" % (iter_num))
+            if print_log:
+                print("[solve_board] Solution found in %i iterations" % (iter_num))
             solution_board = board.copy()
             for x in range(board.width):
                 for y in range(board.height):
@@ -447,8 +450,8 @@ def solve_board(board, **kwargs):
         if solution is None:
             # fallback to _solve_large_board() when _solve_board() skips
             # solving due to too many combinations.
-            return _solve_large_board(board)
+            return _solve_large_board(board, **kwargs)
         else:
             return solution
     else:
-        return _solve_large_board(board)
+        return _solve_large_board(board, **kwargs)
