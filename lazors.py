@@ -41,7 +41,7 @@ def solve_all(boards, processes=1):
      the number of processes to half of available cpu counts.
 
      Note: when *processes* > 1, the returned *solution_board* list may not have the same order as the input
-     *boards* list, because this function will try to solve largest board first in order to maximized performance.
+     *boards* list, because this function will try to solve largest board first to maximize performance.
     """
 
     if processes == 0:
@@ -104,4 +104,4 @@ if __name__ == '__main__':
     solve_all(load_dir('handout'))
 
     # Solve all boards in the game, running in parallel.
-    solve_all(load_dir('all'), processes=0)
+    # solve_all(load_dir('all'), processes=0)
