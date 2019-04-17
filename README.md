@@ -36,12 +36,17 @@ module to solve for board puzzles of the "Lazors" game in Android and iOS
 
 You can use this project by running the batch script directly, or import `pylazors` as a module in your own codes.
 
-### Using batch script `lazor.py`
+### Using batch script `lazors.py`
 
-When running, the script `lazor.py` will create a `solutions` folder, import and solve all `.BFF` inside 
+You can solve all board files given in the handout by running:
+```bash
+$ python3 lazors.py
+```
+
+When running, the script `lazors.py` will create a `solutions` folder, import and solve all `.BFF` inside 
 `boards/handout`, and write solutions as `.PNG` files in `solutions` folder.
 
-You can uncomment the last line in `lazor.py` to also solve all boards in `boards/all` in parallel as well.
+You can uncomment the last line in `lazors.py` to also solve all boards in `boards/all` in parallel as well.
 
 ### Using `pylazors` module
 
