@@ -30,7 +30,7 @@ Finally, we need to wrap all functions into a class once the missing functinos a
   if it is small, use `_solve_board()` in `solve.py`, and if it is large, use `_solve_large_board()` in `_solve.py`.
 - add a small main script `lazors.py`
 
-## Todos in `dev` branch
+## Todos
 - Error handing
 - Unit testing
 - Add back docstrings in original main script (project description, file information, etc)
