@@ -30,6 +30,8 @@ def read_bff(fname):
         fname: *string*
             path to bff file to be read and parsed
 
+            See docs/sample.bff for format detail of .BFF files.
+
     **Returns**
 
         board: *pylazors.Board object*
