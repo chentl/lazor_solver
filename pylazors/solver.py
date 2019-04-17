@@ -387,7 +387,7 @@ def pos_chk(x, y, data_grid):
     return x >= 0 and x < x_dim and y >= 0 and y < y_dim
 
 
-def solve_board(board, *args, **kwargs):
+def solve_board(board, **kwargs):
     """
     Solve a given Lazors board.
 
