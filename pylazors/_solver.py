@@ -5,6 +5,8 @@ The _solve_large_board() function in this file should have same input and output
 as the _solve_board() function in solver.py. Also both functions should yield same
 results when given the same input. The only differences between them is that the one
 in this file will be more efficient when solving large boards.
+
+docs/optimization.md contains some notes about this file.
 """
 
 from pylazors.block import Block
@@ -121,6 +123,7 @@ def _block_combinations(available_locations, num_opaque, num_reflect, num_refrac
     if num_opaque:
         loc_opaque_iter = combinations(locations, num_opaque)
 
+    # Loop in OPAQUE blocks
     for loc_opaque in loc_opaque_iter:
         if num_opaque:
             if banned_single:
@@ -131,7 +134,6 @@ def _block_combinations(available_locations, num_opaque, num_reflect, num_refrac
                 if any(map(lambda b: b[0] in loc_opaque and b[1] in loc_opaque, banned_pair)):
                     skip_opaque_count += 1
                     continue
-
             available_for_reflect = locations - set(loc_opaque)
         else:
             available_for_reflect = locations

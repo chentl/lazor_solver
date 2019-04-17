@@ -37,6 +37,8 @@ bx, by = (hx - (0 if vx > 0 else 1), hy) if y % 2 else (hx, hy - (0 if vy > 0 el
   new_laser (x', y', vx', vy') = (x, y, -vx, vy) if y % 2 else (x, y, vx, -vy)
   ```
 
+At the beginning of any iteration, if the queue is empty, then the tracing is complete. 
+
 ### 3. Combination generator
 
 The generator contains three nested `for` loops, each one iterates through all possible location combinations of one type of blocks (first on opaque blocks, then on reflect blocks, and last on refracting blocks).
