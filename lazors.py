@@ -9,6 +9,10 @@ solution_dir = 'solutions'
 
 
 def solve_all(boards, save_img=True):
+    """
+    Solve a list of boards, print timing information, and return solution boards.
+    """
+
     time_history = []
     solutions = []
 
@@ -51,6 +55,6 @@ if __name__ == '__main__':
     for bff_file in sorted(glob.glob(os.path.join(board_dir, 'handout', '*.bff'))):
         all_boards.append(pylazors.read_bff(bff_file))
         print('[main] load board:', all_boards[-1])
-
     print('[main] %d boards loaded.' % len(all_boards))
+
     solve_all(all_boards)

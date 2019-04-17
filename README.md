@@ -1,4 +1,4 @@
-Last update: April 10, 2019 23:50
+Last update: April 6, 2019 21:00
 
 ***** This readme file will be used as 'project status' unitl the code is complete and robust *****
 
@@ -24,6 +24,13 @@ Finally, we need to wrap all functions into a class once the missing functinos a
 
 ## Changes in `dev` branch
 
-- Add codes in `pylazors` module
-- Add code to export solutions as images in main script `lazor.py`
+- refactor `solve.py` and other module files inside `pylazors`.
+- add a `_solver.py` which contains functions used to solve large boards.
+- add a wrapper function in `solve.py`, `solve_board()`. This function will check the size of the given board, 
+  if it is small, use `_solve_board()` in `solve.py`, and if it is large, use `_solve_large_board()` in `_solve.py`.
+- add a small main script `lazors.py`
 
+## Todos in `dev` branch
+- Error handing
+- Unit testing
+- Add back docstrings in original main script (project description, file information, etc)
