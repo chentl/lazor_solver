@@ -9,9 +9,7 @@ solution_dir = 'solutions'
 
 
 def solve_all(boards, save_img=True):
-    """
-    Solve a list of boards, print timing information, and return solution boards.
-    """
+    """ Solve a list of boards, print timing information, and return solution boards. """
 
     time_history = []
     solutions = []
@@ -49,12 +47,28 @@ def solve_all(boards, save_img=True):
     return solutions
 
 
-if __name__ == '__main__':
-
+def load_dir(dir_name):
+    """ Load all BFF file inside *dir_name* """
+    skipped = 0
     all_boards = []
-    for bff_file in sorted(glob.glob(os.path.join(board_dir, 'handout', '*.bff'))):
-        all_boards.append(pylazors.read_bff(bff_file))
-        print('[main] load board:', all_boards[-1])
-    print('[main] %d boards loaded.' % len(all_boards))
+    for bff_file in sorted(glob.glob(os.path.join(board_dir, dir_name, '*.bff'))):
+        try:
+            all_boards.append(pylazors.read_bff(bff_file))
+            print('[load_dir] load board:', all_boards[-1])
+        except pylazors.BFFReaderError as e:
+            skipped += 1
+            print('[load_dir] Skip loading due to error:', e)
+    print('[load_dir] %d boards loaded from "%s".' % (len(all_boards), dir_name))
+    if skipped:
+        print('[load_dir] %d boards skipped because of error from "%s".' % (skipped, dir_name))
+    return all_boards
 
-    solve_all(all_boards)
+
+if __name__ == '__main__':
+    if not os.path.exists(solution_dir):
+        os.makedirs(solution_dir)
+
+    boards = []
+    boards.extend(load_dir('handout'))
+    boards.extend(load_dir('misconstruction'))
+    solutions = solve_all(boards)

@@ -1,4 +1,4 @@
-Last update: April 6, 2019 21:00
+Last update: April 17, 2019 13:00
 
 ***** This readme file will be used as 'project status' unitl the code is complete and robust *****
 
@@ -29,6 +29,7 @@ Finally, we need to wrap all functions into a class once the missing functinos a
 - add a wrapper function in `solve.py`, `solve_board()`. This function will check the size of the given board, 
   if it is small, use `_solve_board()` in `solve.py`, and if it is large, use `_solve_large_board()` in `_solve.py`.
 - add a small main script `lazors.py`
+- add error handling
 
 ## Todos
 - Error handing

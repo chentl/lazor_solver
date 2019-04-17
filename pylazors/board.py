@@ -9,6 +9,15 @@ from pylazors.block import Block
 
 
 class Board:
+    """
+    The class for representing a Lazors board.
+
+    There are two different coordinates systems used in this class, one for blocks, and another one
+    for laser and target points. The coordinate system for blocks start from top-left as (0, 0),
+    and its step size is by one block. The coordinate system for laser and target points also
+    start from top-left as (0, 0), but its step size is by half block.
+    """
+
     def __init__(self, name, width, height):
         self.name = name
         self.width = width
@@ -28,7 +37,12 @@ class Board:
         self._blocks[y][x] = btype
 
     def load_blocks(self, blocks):
-        """ Load a list of lists as all blocks. """
+        """
+        Load a list of lists as all blocks.
+
+        This should be only called internally by pylazors module since it will not perform any
+        checks for performance reasons.
+        """
 
         self._blocks = deepcopy(blocks)
 
@@ -79,10 +93,16 @@ class Board:
         assert isinstance(y0, int) and 0 <= y0 <= (2 * self.height)
         assert isinstance(x1, int) and 0 <= x1 <= (2 * self.width)
         assert isinstance(y1, int) and 0 <= y1 <= (2 * self.height)
+        assert abs(x0 - x1) == 1 and abs(y0 - y1) == 1, 'The laser segment must have length of sqrt(2)'
         self._laser_segments.append((x0, y0, x1, y1))
 
     def load_laser_segments(self, laser_segments):
-        """ Load a list of tuples as all laser path segments. """
+        """
+        Load a list of tuples as all laser path segments.
+
+        This should be only called internally by pylazors module since it will not perform any
+        checks for performance reasons.
+        """
 
         self._laser_segments = deepcopy(laser_segments)
 
@@ -104,7 +124,7 @@ class Board:
     def add_available_blocks(self, block, count=1):
         """ Add *count* *block*(s) as movable block(s) """
 
-        assert not block.is_fixed()
+        assert not block.is_fixed(), 'The available block cannot be a fixed block.'
         self._available_blocks += [block] * count
 
     def get_available_blocks(self):
@@ -120,16 +140,16 @@ class Board:
                 if not self.get_block(x, y).is_fixed():
                     self.mod_block(x, y, Block.BLANK)
 
-    def copy(self, with_blocks=True, with_lasers=True, with_points=True,
+    def copy(self, with_blocks=True, with_laser_sources=True, with_targets=True,
              with_available_blocks=True, with_laser_segments=True):
         """ Return a copy of this board """
 
         new_board = Board(self.name, self.width, self.height)
         if with_blocks:
             new_board._blocks = deepcopy(self._blocks)
-        if with_lasers:
+        if with_laser_sources:
             new_board._laser_sources = deepcopy(self._laser_sources)
-        if with_points:
+        if with_targets:
             new_board._targets = deepcopy(self._targets)
         if with_available_blocks:
             new_board._available_blocks = deepcopy(self._available_blocks)

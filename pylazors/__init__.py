@@ -9,5 +9,5 @@ else:
     from .block import Block
     from .solver import solve_board
     from .formats.png import write_png
-    from .formats.bff import write_bff, read_bff
+    from .formats.bff import write_bff, read_bff, BFFReaderError
 
