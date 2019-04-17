@@ -1,6 +1,8 @@
 # lazor_solver
 module to solve for board puzzles of the "Lazors" game in Android and iOS
 
+![mad_4](docs/img/mad_4.png)
+
 
 ## Requirements
 
@@ -32,7 +34,7 @@ You can uncomment the last line in `lazors.py` to also solve all boards in `boar
 
 ### Using `pylazors` module
 
-The `pylazors` contains classes and functions that can be used to read and write a board, and solve a board. Here is a simple example:
+The `pylazors` module contains classes and functions that can be used to read and write a board, and solve a board. Here is a simple example:
 ```python
 import pylazors
 
@@ -59,10 +61,10 @@ $ python3 -m unittest discover -s tests
   - Image loader of board to solve
     the initial image processessing can yield the following, wondering if Template Matching can work here?
 
-  <img src="/utilites/img_reader/Mad_7.jpg" alt="drawing" width="200"/> ---> <img src="/utilites/img_reader/Result_IMAGE.png" alt="drawing" width="200"/>
+  <img src="utilites/img_reader/Mad_7.jpg" alt="drawing" width="200"/> ---> <img src="utilites/img_reader/Result_IMAGE.png" alt="drawing" width="200"/>
 
 
-  <img src="/utilites/img_reader/Diagonal_3.jpg" alt="drawing" width="200"/> ---> <img src="/utilites/img_reader/Result_IMAGE_Diagonal_3.png" alt="drawing" width="200"/>
+  <img src="utilites/img_reader/Diagonal_3.jpg" alt="drawing" width="200"/> ---> <img src="utilites/img_reader/Result_IMAGE_Diagonal_3.png" alt="drawing" width="200"/>
 
 
 ## Performance
