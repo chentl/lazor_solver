@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="328px" height="203px" viewBox="0 0 328 203" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="coord" transform="translate(-98.000000, -265.000000)">
+            <g id="Group-2" transform="translate(98.000000, 265.000000)">
+                <g id="Group-20" transform="translate(1.000000, 2.000000)">
+                    <polygon id="Fill-3" fill="#FFFFFF" points="0 0 50 0 50 50 0 50"></polygon>
+                    <polygon id="Fill-5" fill="#FFFFFF" points="50 0 100 0 100 50 50 50"></polygon>
+                    <polygon id="Fill-6" fill-opacity="0.5" fill="#56C1FF" points="100 0 150 0 150 50 100 50"></polygon>
+                    <polygon id="Fill-7" fill="#FFFFFF" points="150 0 200 0 200 50 150 50"></polygon>
+                    <polygon id="Fill-8" fill="#FFFFFF" points="0 50 50 50 50 100 0 100"></polygon>
+                    <polygon id="Fill-9" fill="#FFFFFF" points="50 50 100 50 100 100 50 100"></polygon>
+                    <polygon id="Fill-10" fill="#FFFFFF" points="100 50 150 50 150 100 100 100"></polygon>
+                    <polygon id="Fill-11" fill-opacity="0.5" fill="#88FA4E" points="150 50 200 50 200 100 150 100"></polygon>
+                    <polygon id="Fill-12" fill="#FFFFFF" points="0 100 50 100 50 150 0 150"></polygon>
+                    <polygon id="Fill-13" fill="#FFFFFF" points="50 100 100 100 100 150 50 150"></polygon>
+                    <polygon id="Fill-14" fill="#FFFFFF" points="100 100 150 100 150 150 100 150"></polygon>
+                    <polygon id="Fill-15" fill="#FFFFFF" points="150 100 200 100 200 150 150 150"></polygon>
+                    <polygon id="Fill-16" fill="#FFFFFF" points="0 150 50 150 50 200 0 200"></polygon>
+                    <polygon id="Fill-17" fill="#D6D5D5" points="50 150 100 150 100 200 50 200"></polygon>
+                    <polygon id="Fill-18" fill="#FFFFFF" points="100 150 150 150 150 200 100 200"></polygon>
+                    <polygon id="Fill-19" fill="#FFFFFF" points="150 150 200 150 200 200 150 200"></polygon>
+                </g>
+                <text id="(0,0)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="8" y="27.40625">(0,0)</tspan>
+                </text>
+                <text id="(1,0)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="58" y="27.40625">(1,0)</tspan>
+                </text>
+                <text id="(2,0)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="108" y="27.40625">(2,0)</tspan>
+                </text>
+                <text id="(3,0)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="158" y="27.40625">(3,0)</tspan>
+                </text>
+                <text id="(0,1)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="8" y="77.40625">(0,1)</tspan>
+                </text>
+                <text id="(1,1)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="58" y="77.40625">(1,1)</tspan>
+                </text>
+                <text id="(2,1)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="108" y="77.40625">(2,1)</tspan>
+                </text>
+                <text id="(3,1)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="158" y="77.40625">(3,1)</tspan>
+                </text>
+                <text id="(0,2)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="8" y="127.40625">(0,2)</tspan>
+                </text>
+                <text id="(1,2)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="58" y="127.40625">(1,2)</tspan>
+                </text>
+                <text id="(2,2)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="108" y="127.40625">(2,2)</tspan>
+                </text>
+                <text id="(3,2)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="158" y="127.40625">(3,2)</tspan>
+                </text>
+                <text id="(0,3)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="8" y="177.40625">(0,3)</tspan>
+                </text>
+                <text id="(1,3)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="58" y="177.40625">(1,3)</tspan>
+                </text>
+                <text id="(2,3)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="108" y="177.40625">(2,3)</tspan>
+                </text>
+                <text id="(3,3)" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="158" y="177.40625">(3,3)</tspan>
+                </text>
+                <g id="Group-57" transform="translate(0.000000, 1.000000)" stroke="#000000">
+                    <path d="M51,0.5 L51,201.5" id="Stroke-37"></path>
+                    <path d="M101,0.5 L101,201.5" id="Stroke-39"></path>
+                    <path d="M151,0.5 L151,201.5" id="Stroke-41"></path>
+                    <path d="M0.5,51 L201.5,51" id="Stroke-43"></path>
+                    <path d="M0.5,101 L201.5,101" id="Stroke-45"></path>
+                    <path d="M0.5,151 L201.5,151" id="Stroke-47"></path>
+                    <path d="M1,0.5 L1,201.5" id="Stroke-49"></path>
+                    <path d="M201,0.5 L201,201.5" id="Stroke-51"></path>
+                    <path d="M0.5,1 L201.5,1" id="Stroke-53"></path>
+                    <path d="M0.5,201 L201.5,201" id="Stroke-55"></path>
+                </g>
+                <g id="Group-63" transform="translate(227.000000, 1.000000)">
+                    <polygon id="Fill-58" fill="#FFFFFF" points="0 0 100 0 100 50 0 50"></polygon>
+                    <polygon id="Fill-60" fill-opacity="0.5" fill="#56C1FF" points="0 50 100 50 100 100 0 100"></polygon>
+                    <polygon id="Fill-61" fill-opacity="0.5" fill="#88FA4E" points="0 100 100 100 100 150 0 150"></polygon>
+                    <polygon id="Fill-62" fill="#D6D5D5" points="0 150 100 150 100 200 0 200"></polygon>
+                </g>
+                <text id="Blank-Block" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="237" y="26.40625">Blank Block</tspan>
+                </text>
+                <g id="Group-67" transform="translate(241.000000, 59.000000)" fill="#000000" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001">
+                    <text id="Reflective-">
+                        <tspan x="0" y="10.40625">Reflective </tspan>
+                    </text>
+                    <text id="Block">
+                        <tspan x="18" y="24.40625">Block</tspan>
+                    </text>
+                </g>
+                <g id="Group-70" transform="translate(241.000000, 109.000000)" fill="#000000" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001">
+                    <text id="Refractive-">
+                        <tspan x="0" y="10.40625">Refractive </tspan>
+                    </text>
+                    <text id="Block">
+                        <tspan x="18" y="24.40625">Block</tspan>
+                    </text>
+                </g>
+                <text id="Opaque-Block" font-family="CourierNewPSMT, Courier New" font-size="12" font-weight="normal" letter-spacing="0.0001" fill="#000000">
+                    <tspan x="234" y="176.40625">Opaque Block</tspan>
+                </text>
+                <g id="Group-98" transform="translate(226.000000, 0.000000)" stroke="#000000">
+                    <path d="M0.5,51 L101.5,51" id="Stroke-72"></path>
+                    <path d="M0.5,101 L101.5,101" id="Stroke-74"></path>
+                    <path d="M0.5,151 L101.5,151" id="Stroke-76"></path>
+                    <path d="M1,0.5 L1,51" id="Stroke-78"></path>
+                    <path d="M1,51 L1,101" id="Stroke-80"></path>
+                    <path d="M1,101 L1,151" id="Stroke-82"></path>
+                    <path d="M1,151 L1,201.5" id="Stroke-84"></path>
+                    <path d="M101,0.5 L101,51" id="Stroke-86"></path>
+                    <path d="M101,51 L101,101" id="Stroke-88"></path>
+                    <path d="M101,101 L101,151" id="Stroke-90"></path>
+                    <path d="M101,151 L101,201.5" id="Stroke-92"></path>
+                    <path d="M0.5,1 L101.5,1" id="Stroke-94"></path>
+                    <path d="M0.5,201 L101.5,201" id="Stroke-96"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

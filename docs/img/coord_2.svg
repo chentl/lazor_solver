@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="275px" height="277px" viewBox="0 0 275 277" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="coord" transform="translate(-572.000000, -285.000000)">
+            <g id="Group" transform="translate(574.000000, 281.000000)">
+                <g id="Group-181" transform="translate(16.000000, 31.148438)">
+                    <polygon id="Fill-164" fill="#FFFFFF" points="0 0 50 0 50 50 0 50"></polygon>
+                    <polygon id="Fill-166" fill="#FFFFFF" points="50 0 100 0 100 50 50 50"></polygon>
+                    <polygon id="Fill-167" fill-opacity="0.5" fill="#56C1FF" points="100 0 150 0 150 50 100 50"></polygon>
+                    <polygon id="Fill-168" fill="#FFFFFF" points="150 0 200 0 200 50 150 50"></polygon>
+                    <polygon id="Fill-169" fill="#FFFFFF" points="0 50 50 50 50 100 0 100"></polygon>
+                    <polygon id="Fill-170" fill="#FFFFFF" points="50 50 100 50 100 100 50 100"></polygon>
+                    <polygon id="Fill-171" fill="#FFFFFF" points="100 50 150 50 150 100 100 100"></polygon>
+                    <polygon id="Fill-172" fill-opacity="0.5" fill="#88FA4E" points="150 50 200 50 200 100 150 100"></polygon>
+                    <polygon id="Fill-173" fill="#FFFFFF" points="0 100 50 100 50 150 0 150"></polygon>
+                    <polygon id="Fill-174" fill="#FFFFFF" points="50 100 100 100 100 150 50 150"></polygon>
+                    <polygon id="Fill-175" fill="#FFFFFF" points="100 100 150 100 150 150 100 150"></polygon>
+                    <polygon id="Fill-176" fill="#FFFFFF" points="150 100 200 100 200 150 150 150"></polygon>
+                    <polygon id="Fill-177" fill="#FFFFFF" points="0 150 50 150 50 200 0 200"></polygon>
+                    <polygon id="Fill-178" fill="#D6D5D5" points="50 150 100 150 100 200 50 200"></polygon>
+                    <polygon id="Fill-179" fill="#FFFFFF" points="100 150 150 150 150 200 100 200"></polygon>
+                    <polygon id="Fill-180" fill="#FFFFFF" points="150 150 200 150 200 200 150 200"></polygon>
+                </g>
+                <g id="Group-212" transform="translate(15.000000, 30.148438)" stroke="#000000">
+                    <path d="M51,0.5 L51,201.5" id="Stroke-182"></path>
+                    <path d="M101,0.5 L101,201.5" id="Stroke-184"></path>
+                    <path d="M151,0.5 L151,201.5" id="Stroke-186"></path>
+                    <path d="M0.5,51 L51,51" id="Stroke-188"></path>
+                    <path d="M51,51 L201.5,51" id="Stroke-190"></path>
+                    <path d="M0.5,101 L51,101" id="Stroke-192"></path>
+                    <path d="M51,101 L201.5,101" id="Stroke-194"></path>
+                    <path d="M0.5,151 L51,151" id="Stroke-196"></path>
+                    <path d="M51,151 L201.5,151" id="Stroke-198"></path>
+                    <path d="M1,0.5 L1,201.5" id="Stroke-200"></path>
+                    <path d="M201,0.5 L201,201.5" id="Stroke-202"></path>
+                    <path d="M0.5,1 L51,1" id="Stroke-204"></path>
+                    <path d="M51,1 L201.5,1" id="Stroke-206"></path>
+                    <path d="M0.5,201 L51,201" id="Stroke-208"></path>
+                    <path d="M51,201 L201.5,201" id="Stroke-210"></path>
+                </g>
+                <polyline id="Stroke-213" stroke="#EE220C" points="42.2503 180.796638 137.654139 85.3927981 138.007693 85.0392447"></polyline>
+                <polygon id="Fill-215" fill="#EE220C" points="139.7754 87.5141375 141.8967 81.1501375 135.5327 83.2715375"></polygon>
+                <path d="M44.018,179.028937 C45.1896,180.200437 45.1896,182.099937 44.018,183.271537 C42.8464,184.443138 40.9469,184.443138 39.7754,183.271537 C38.6038,182.099937 38.6038,180.200437 39.7754,179.028937 C40.9469,177.857337 42.8464,177.857337 44.018,179.028937 Z" id="Fill-217" fill="#EE220C"></path>
+                <polyline id="Stroke-218" stroke="#EE220C" points="93.3409874 177.26115 93.6945408 176.907597 165.60108 105.001058"></polyline>
+                <polygon id="Fill-219" fill="#EE220C" points="91.5732 174.786237 89.4519 181.150238 95.8159 179.028937"></polygon>
+                <polyline id="Stroke-220" stroke="#EE220C" points="142.4574 81.5037375 161.358485 100.404822 161.712038 100.758376"></polyline>
+                <polygon id="Fill-221" fill="#EE220C" points="159.2371 102.526137 165.6011 104.647537 163.4798 98.2835375"></polygon>
+                <polyline id="Stroke-222" stroke="#EE220C" points="142.4573 81.5037375 214.420125 153.466562 214.773678 153.820116"></polyline>
+                <polygon id="Fill-223" fill="#EE220C" points="212.2988 155.587938 218.6628 157.709238 216.5415 151.345338"></polygon>
+                <polyline id="Stroke-224" stroke="#004D80" points="15.6011 31.1502375 15.6011 266.150238 15.6011 266.650238"></polyline>
+                <polygon id="Fill-225" fill="#004D80" points="12.6011 266.150228 15.6011 272.150228 18.6011 266.150228"></polygon>
+                <polyline id="Stroke-226" stroke="#004D80" points="15.6011 31.1502375 262.1924 31.1502375 262.6924 31.1502375"></polyline>
+                <polygon id="Fill-227" fill="#004D80" points="262.1923 34.1502375 268.1923 31.1502375 262.1923 28.1502375"></polygon>
+                <text id="x" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal" fill="#004D80">
+                    <tspan x="264" y="18">x</tspan>
+                </text>
+                <text id="y" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="24" font-style="italic" font-weight="normal" fill="#004D80">
+                    <tspan x="0" y="274.570312">y</tspan>
+                </text>
+                <text id="2" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal" fill="#004D80">
+                    <tspan x="61" y="19">2</tspan>
+                </text>
+                <text id="4" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal" fill="#004D80">
+                    <tspan x="111" y="19">4</tspan>
+                </text>
+                <text id="6" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal" fill="#004D80">
+                    <tspan x="161" y="19">6</tspan>
+                </text>
+                <text id="8" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal" fill="#004D80">
+                    <tspan x="211" y="19">8</tspan>
+                </text>
+                <text id="0" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal" fill="#004D80">
+                    <tspan x="1" y="18">0</tspan>
+                </text>
+                <text id="2" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal" fill="#004D80">
+                    <tspan x="1" y="84">2</tspan>
+                </text>
+                <text id="4" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal" fill="#004D80">
+                    <tspan x="1" y="134">4</tspan>
+                </text>
+                <text id="6" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal" fill="#004D80">
+                    <tspan x="1" y="184">6</tspan>
+                </text>
+                <text id="8" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal" fill="#004D80">
+                    <tspan x="1" y="234">8</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
