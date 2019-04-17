@@ -54,7 +54,7 @@ In the middle `for` loop for reflect blocks, one test is performed:
 
 - Any two opaque or reflect blocks cannot be placed together so that they will surround a target point, such that there is no way a laser can reach that target point.
 
-These quick tests can save time by skipping lots of expansive `_trace_lasers` calls. Here is the result of a benchmark of solving all the boards in *Lazors* game:
+These quick tests can save time by skipping lots of expansive `_trace_lasers` calls. Here is the result of a benchmark *(running on a 2.6GHz CPU)* of solving all the boards in *Lazors* game:
 
 |                | Total time used | Average time per board | Total `_trace_lasers` calls |
 | :------------: | :-------------: | :--------------------: | :-------------------------: |

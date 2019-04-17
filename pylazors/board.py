@@ -125,7 +125,7 @@ class Board:
     def add_available_blocks(self, block, count=1):
         """ Add *count* *block*(s) as movable block(s) """
 
-        assert not block.is_fixed(), 'The available block cannot be a fixed block.'
+        assert block in [Block.REFRACT, Block.REFLECT, Block.OPAQUE]
         self._available_blocks += [block] * count
 
     def get_available_blocks(self):

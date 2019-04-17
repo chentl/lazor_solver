@@ -30,6 +30,7 @@ module to solve for board puzzles of the "Lazors" game in Android and iOS
 
 ## Tested environment
 - Python 3.7.3 with `numpy (v1.15.2)` and `Pillow (v5.4.1)`
+- Python 3.6.7 with `numpy (v1.16.2)` and `Pillow (v6.0.0)`
 
 
 ## Usage
@@ -40,6 +41,7 @@ You can use this project by running the batch script directly, or import `pylazo
 
 You can solve all board files given in the handout by running:
 ```bash
+$ cd lazor_solver
 $ python3 lazors.py
 ```
 
@@ -64,6 +66,14 @@ solution = pylazors.solve_board(board)
 pylazors.write_png(solution, 'solutions/dark_1.png')
 ```
 
+## Unit tests
+
+You can run all unit tests by:
+```bash
+$ cd lazor_solver
+$ python3 -m unittest discover -s tests 
+```
+
 ## Underdevelopment
 
   - Image loader of board to solve
@@ -77,40 +87,40 @@ pylazors.write_png(solution, 'solutions/dark_1.png')
 
 ## Performance
 
-Following performance benchmarks were obtained using a quad-core 2.6 GHz processor.
+Following performance benchmarks were obtained using an eight-core 4.0 GHz processor.
 
 #### Serial
 
 - for 8 boards in `boards/handout`:
 
     ```
-	total wall time: 12.10 seconds. 
-	total CPU time:  10.955 seconds (min/avg/max 0.002/1.369/5.779). 
-	5 slowest boards: yarn_5 (5.8s), mad_7 (4.5s), showstopper_4 (0.2s), numbered_6 (0.2s), mad_4 (0.1s)
+	total wall time: 7.02 seconds.
+	total CPU time:  6.441 seconds (min/avg/max 0.004/0.805/3.513).
+	5 slowest boards: yarn_5 (3.5s), mad_7 (2.4s), showstopper_4 (0.2s), mad_4 (0.1s), numbered_6 (0.1s)
     ```
 
 - for 157 boards in `boards/all`:
 
     ```
-	total wall time: 715.65 seconds. 
-	total CPU time:  692.290 seconds (min/avg/max 0.000/4.409/226.741). 
-	5 slowest boards: showstopper_9 (226.7s), grande_10 (132.5s), diagonal_10 (115.9s), showstopper_10 (59.5s), grande_9 (18.2s)
+	total wall time: 415.08 seconds.
+	total CPU time:  403.748 seconds (min/avg/max 0.000/2.572/129.844). 
+	5 slowest boards: showstopper_9 (129.8s), grande_10 (80.1s), diagonal_10 (66.9s), showstopper_10 (33.4s), grande_9 (10.8s)
     ```
 
-#### Parallel (using 4 processes)
+#### Parallel (using 8 processes)
 
 - for 8 boards in `boards/handout`:
 
     ```
-	total wall time: 6.19 seconds.
-	total CPU time:  11.375 seconds (min/avg/max 0.001/1.422/5.971).
-	5 slowest boards: yarn_5 (6.0s), mad_7 (4.6s), numbered_6 (0.3s), showstopper_4 (0.2s), mad_4 (0.2s)
+	total wall time: 3.62 seconds.
+	total CPU time:  6.506 seconds (min/avg/max 0.002/0.813/3.503).
+	5 slowest boards: yarn_5 (3.5s), mad_7 (2.4s), showstopper_4 (0.2s), mad_4 (0.2s), numbered_6 (0.1s)
     ```
 
 - for 157 boards in `boards/all`:
 
     ```
-	total wall time: 283.41 seconds.
-	total CPU time:  898.729 seconds (min/avg/max 0.001/5.724/283.186).
-	5 slowest boards: showstopper_9 (283.2s), grande_10 (173.9s), diagonal_10 (146.6s), showstopper_10 (67.1s), grande_9 (27.5s)
+	total wall time: 136.92 seconds.
+	total CPU time:  455.573 seconds (min/avg/max 0.000/2.902/136.804).
+	5 slowest boards: showstopper_9 (136.8s), grande_10 (88.0s), diagonal_10 (74.2s), showstopper_10 (39.5s), grande_9 (13.8s)
     ```

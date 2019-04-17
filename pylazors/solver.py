@@ -76,7 +76,8 @@ def _solve_board(board, solve_limit=1E5, print_log=True):
     blocks = [block_bff_map[fix_block(block)] for block in board.get_available_blocks()]
     lazers = [list(map(str, l)) for l in board.get_laser_sources()]
     points = [list(map(str, p)) for p in board.get_targets()]
-    block_counts = list(map(lambda b: board.get_available_blocks().count(b), [Block.REFLECT, Block.OPAQUE, Block.REFRACT]))
+    block_counts = list(map(lambda b: board.get_available_blocks().count(b), [
+        Block.REFLECT, Block.OPAQUE, Block.REFRACT]))
 
     # load data and count number of available positions
     # letter_grid, blocks, lazers, points, block_counts = data
@@ -85,9 +86,10 @@ def _solve_board(board, solve_limit=1E5, print_log=True):
     # calculate the number of moveable blocks and available positions [debug]
     n_blocks, n_pos = len(blocks), len(available_positions)
     # calculate the number of unique combinations or possible combinations
-    unique_combinations = factorial(n_pos) / (factorial(n_pos - n_blocks) * factorial(block_counts[0]) * factorial(block_counts[1]) * factorial(block_counts[2]))
+    unique_combinations = factorial(n_pos) / (factorial(n_pos - n_blocks) * factorial(block_counts[0]) *
+                                              factorial(block_counts[1]) * factorial(block_counts[2]))
 
-    if unique_combinations > solve_limit and solve_limit != 0:
+    if unique_combinations > solve_limit != 0:
         print("[solve_board] skipped: too many combinations! (%i)" % unique_combinations)
         return None
 
@@ -143,7 +145,7 @@ def _solve_board(board, solve_limit=1E5, print_log=True):
 
 
 def get_possible_combs_perm(blocks, available_positions):
-    '''
+    """
     unique combinations generator. This function still generates similar
     combinations
 
@@ -159,7 +161,7 @@ def get_possible_combs_perm(blocks, available_positions):
 
         possible_combs: *list*{*list*{*string*, *tulpe*}}
             list of all possible combinations of letters in available positions
-    '''
+    """
     num_avail_blocks = len(blocks)
 
     i_perm = []
@@ -254,6 +256,7 @@ def get_data_grid(letter_grid, points):
                          [ 0.  0.  0.  0.  2.  2.  2.  0.  0.  0.  0.]]
 
     """
+
     x_dim, y_dim = 2 * len(letter_grid) + 1, 2 * len(letter_grid[0]) + 1
     data_grid = np.zeros(shape=(x_dim, y_dim))
     directions = [
@@ -376,7 +379,7 @@ def lazor_on(data_grid, lazers, MAXITER=100):
             # if reflection block, reflect lazer
             elif incident_pos_val == 2:
                 # if lazer is trapped between two reflection blocks, stop lazer
-                if (other_pos_val == 2 or other_pos_val == 4):
+                if other_pos_val == 2 or other_pos_val == 4:
                     break
                 lazer_vector[reflection] = -1 * lazer_vector[reflection]
                 pos = [pos[0] + lazer_vector[0], pos[1] + lazer_vector[1]]
@@ -386,7 +389,7 @@ def lazor_on(data_grid, lazers, MAXITER=100):
             # if refreact block, refract lazer
             elif incident_pos_val == 6:
                 # if other block is reflection block, only pass through
-                if (other_pos_val == 2 or other_pos_val == 4):
+                if other_pos_val == 2 or other_pos_val == 4:
                     pos = [pos[0] + lazer_vector[0], pos[1] + lazer_vector[1]]
                 # otherwise, passthrough lazer, and add additional reflection lazer
                 else:
@@ -425,7 +428,7 @@ def pos_chk(x, y, data_grid):
     # x_dim, y_dim = 2 * len(grid[0]) + 1, 2 * len(grid) + 1
     x_dim, y_dim = len(data_grid[0, :]), len(data_grid[:, 0])
     # print(x_dim, y_dim)
-    return x >= 0 and x < x_dim and y >= 0 and y < y_dim
+    return 0 <= x < x_dim and 0 <= y < y_dim
 
 
 def solve_board(board, **kwargs):
