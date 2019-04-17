@@ -12,7 +12,7 @@ The coordinate system for laser and target points also start from top-left as `(
 
 ![coord_2](img/coord_2.svg)
 
-### 2. Laser tracing
+## 2. Laser tracing
 
 Laser tracing starts with a queue contains all untraced laser sources. At each iteration, one laser is popped from that queue.
 
@@ -39,11 +39,11 @@ bx, by = (hx - (0 if vx > 0 else 1), hy) if y % 2 else (hx, hy - (0 if vy > 0 el
 
 At the beginning of any iteration, if the queue is empty, then the tracing is complete. 
 
-### 3. Combination generator
+## 3. Combination generator
 
 The generator contains three nested `for` loops, each one iterates through all possible location combinations of one type of blocks (first on opaque blocks, then on reflect blocks, and last on refracting blocks).
 
-After each combination are generated using `itertools.combinations`, a few quick tests are performed. If any of those tests failed, the generator would skip to the next combination, instead of returning it and waste time on the `_trace_lasers ` function.
+After each combination are generated using `itertools.combinations`, a few quick tests are performed. If any of those tests failed, the generator would skip to the next combination, instead of returning it and waste time on the `_trace_lasers` function.
 
 In the outer `for` loop for opaque blocks, two tests are performed:
 
@@ -54,14 +54,14 @@ In the middle `for` loop for reflect blocks, one test is performed:
 
 - Any two opaque or reflect blocks cannot be placed together so that they will surround a target point, such that there is no way a laser can reach that target point.
 
-These quick tests can save time by skipping lots of expansive `_trace_lasers ` calls. Here is the result of a benchmark of solving all the boards in *Lazors* game:
+These quick tests can save time by skipping lots of expansive `_trace_lasers` calls. Here is the result of a benchmark of solving all the boards in *Lazors* game:
 
-|                | Total time used | Average time per board | Total `_trace_lasers  ` calls |
-| :------------: | :-------------: | :--------------------: | :---------------------------: |
-|  **No tests**  |  1592.405 sec   |       10.143 sec       |          79,578,836           |
-| **With tests** |   732.311 sec   |       4.664 sec        |          23,039,788           |
+|                | Total time used | Average time per board | Total `_trace_lasers` calls |
+| :------------: | :-------------: | :--------------------: | :-------------------------: |
+|  **No tests**  |  1592.405 sec   |       10.143 sec       |         79,578,836          |
+| **With tests** |   732.311 sec   |       4.664 sec        |         23,039,788          |
 
-From the result, we can see that three simple tests can reduce the total number of  `_trace_lasers ` calls by more than 70%. And the average time used per board is reduced by more than 50%. 
+From the result, we can see that three simple tests can reduce the total number of  `_trace_lasers` calls by more than 70%. And the average time used per board is reduced by more than 50%. 
 
 There are also limitations to this method. First is that if for a specific board, very fewer combinations can be skipped from those test, this method will have almost no effect, or even degrading performance, since performing those tests adds a constant time in each iteration. Also, the speedup differs from board to board. The following table contains timing information for five slowest boards to solve.
 
