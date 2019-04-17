@@ -26,6 +26,7 @@ _block_textures = {
 
 _other_textures = {
     'laser': _load_texture('laser.png', size=_BLOCK_SIZE // 5 * 3),
+    'target': _load_texture('target.png', size=_BLOCK_SIZE // 5 * 4),
     'target_hit': _load_texture('target_hit.png', size=_BLOCK_SIZE // 5 * 4),
 }
 
@@ -33,7 +34,7 @@ _font_file = os.path.join(_FONT_DIR, 'SourceCodeVariable-Roman.ttf')
 
 
 def write_png(board, fname, note=None):
-    '''
+    """
     Write *board* as a PNG image.
 
         **Parameters**
@@ -49,7 +50,7 @@ def write_png(board, fname, note=None):
 
         None
 
-    '''
+    """
 
     if not fname.endswith('.png'):
         fname += '.png'
@@ -91,16 +92,23 @@ def write_png(board, fname, note=None):
     texture = _other_textures['laser']
     texture_size = _BLOCK_SIZE // 5 * 3
     d_size = texture_size // 2, texture_size - texture_size // 2
-    for x, y, _, _ in board.get_lasers():
+    for x, y, _, _ in board.get_laser_sources():
         img.paste(texture, [int(x / 2 * _BLOCK_SIZE) - d_size[0] + margin,
                             int(y / 2 * _BLOCK_SIZE) - d_size[0] + margin,
                             int(x / 2 * _BLOCK_SIZE) + d_size[1] + margin,
                             int(y / 2 * _BLOCK_SIZE) + d_size[1] + margin], mask=texture)
 
-    texture = _other_textures['target_hit']
+    all_points_on_path = []
+    for s in board.get_laser_segments():
+        all_points_on_path.append((s[0], s[1]))
+        all_points_on_path.append((s[2], s[3]))
     texture_size = _BLOCK_SIZE // 5 * 4
     d_size = texture_size // 2, texture_size - texture_size // 2
-    for x, y, in board.get_points():
+    for x, y, in board.get_targets():
+        if (x, y) in all_points_on_path:
+            texture = _other_textures['target_hit']
+        else:
+            texture = _other_textures['target']
         img.paste(texture, [int(x / 2 * _BLOCK_SIZE) - d_size[0] + margin,
                             int(y / 2 * _BLOCK_SIZE) - d_size[0] + margin,
                             int(x / 2 * _BLOCK_SIZE) + d_size[1] + margin,

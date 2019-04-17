@@ -1,3 +1,9 @@
+"""
+This file contains classes used for describing a block. And some helper functions to modify a block.
+
+*Block* class is used to represent blocks in this module.
+"""
+
 from enum import IntEnum, IntFlag
 
 

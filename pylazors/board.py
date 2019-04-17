@@ -1,3 +1,9 @@
+"""
+This file contains classes used for describing a board.
+
+*Board* class is used to represent boards in this module.
+"""
+
 from pylazors.utils import deepcopy
 from pylazors.block import Block
 
