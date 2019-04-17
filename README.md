@@ -35,3 +35,19 @@ Finally, we need to wrap all functions into a class once the missing functinos a
 - Error handing
 - Unit testing
 - Add back docstrings in original main script (project description, file information, etc)
+
+## Performance
+
+for boards in `boards/handout`:
+
+```
+[solve_all] 8 boards solved in 11.155 seconds (min/avg/max 0.001/1.394/6.208).
+[solve_all] 5 slowest boards: yarn_5 (6.2s), mad_7 (4.5s), numbered_6 (0.2s), mad_4 (0.1s), mad_1 (0.1s)
+```
+
+for boards in `boards/all`:
+
+```
+[solve_all] 157 boards solved in 732.311 seconds (min/avg/max 0.000/4.664/250.364).
+[solve_all] 5 slowest boards: showstopper_9 (250.4s), grande_10 (142.1s), diagonal_10 (117.9s), showstopper_10 (69.3s), grande_9 (22.1s)
+```
