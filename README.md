@@ -1,25 +1,5 @@
-Last update: April 17, 2019 13:00
-
-***** This readme file will be used as 'project status' unitl the code is complete and robust *****
-
 # lazor_solver
 module to solve for board puzzles of the "Lazors" game in Android and iOS
-
-
-## Changes in `dev` branch
-
-- refactor `solve.py` and other module files inside `pylazors`.
-- add a `_solver.py` which contains functions used to solve large boards.
-- add a wrapper function in `solve.py`, `solve_board()`. This function will check the size of the given board, 
-  if it is small, use `_solve_board()` in `solve.py`, and if it is large, use `_solve_large_board()` in `_solve.py`.
-- add a small main script `lazors.py`
-- add error handling
-
-## Todos
-- (maybe?) more Error handing and Unit testing
-- Add back docstrings in original main script (project description, file information, etc)
-- the function *get_possible_combs_perm* returns more than needed combinations, this can be due to sorting issues
-- possibly after commiting the image loader, merge with the bff_loader to take input as either bff file or image
 
 
 ## Requirements
