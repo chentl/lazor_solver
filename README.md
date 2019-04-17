@@ -5,22 +5,6 @@ Last update: April 17, 2019 13:00
 # lazor_solver
 module to solve for board puzzles of the "Lazors" game in Android and iOS
 
-Underdevelopment:
-  - Image loader of board to solve
-    the initial image processessing can yield the following, wondering if Template Matching can work here?
-
-  <img src="/utilites/img_reader/Mad_7.jpg" alt="drawing" width="200"/> ---> <img src="/utilites/img_reader/Result_IMAGE.png" alt="drawing" width="200"/>
-
-
-  <img src="/utilites/img_reader/Diagonal_3.jpg" alt="drawing" width="200"/> ---> <img src="/utilites/img_reader/Result_IMAGE_Diagonal_3.png" alt="drawing" width="200"/>
-
-​    
-
-The loader and solver are running smoothly, however there are multiple issues that can be addressed and solved:
-  - the function *get_possible_combs_perm* returns more than needed combinations, this can be due to sorting issues
-  - possibly after commiting the image loader, merge with the bff_loader to take input as either bff file or image
-
-Finally, we need to wrap all functions into a class once the missing functinos are added.
 
 ## Changes in `dev` branch
 
@@ -32,9 +16,59 @@ Finally, we need to wrap all functions into a class once the missing functinos a
 - add error handling
 
 ## Todos
-- Error handing
-- Unit testing
+- (maybe?) more Error handing and Unit testing
 - Add back docstrings in original main script (project description, file information, etc)
+- the function *get_possible_combs_perm* returns more than needed combinations, this can be due to sorting issues
+- possibly after commiting the image loader, merge with the bff_loader to take input as either bff file or image
+
+
+## Requirements
+
+- Python 3.6 or higher
+- `numpy` and `Pillow`
+
+
+## Tested environment
+- Python 3.7.3 with `numpy (v1.15.2)` and `Pillow (v5.4.1)`
+
+
+## Usage
+
+You can use this project by running the batch script directly, or import `pylazors` as a module in your own codes.
+
+### Using batch script `lazor.py`
+
+When running, the script `lazor.py` will create a `solutions` folder, import and solve all `.BFF` inside 
+`boards/handout`, and write solutions as `.PNG` files in `solutions` folder.
+
+You can uncomment the last line in `lazor.py` to also solve all boards in `boards/all` in parallel as well.
+
+### Using `pylazors` module
+
+The `pylazors` contains classes and functions that can be used to read and write a board, and solve a board. Here is a simple example:
+```python
+import pylazors
+
+# Import .BFF file as a <pylazors.Board> object
+board = pylazors.read_bff('boards/handout/dark_1.bff')
+
+# Solve board
+solution = pylazors.solve_board(board)
+
+# Write solution as an image
+pylazors.write_png(solution, 'solutions/dark_1.png')
+```
+
+## Underdevelopment
+
+  - Image loader of board to solve
+    the initial image processessing can yield the following, wondering if Template Matching can work here?
+
+  <img src="/utilites/img_reader/Mad_7.jpg" alt="drawing" width="200"/> ---> <img src="/utilites/img_reader/Result_IMAGE.png" alt="drawing" width="200"/>
+
+
+  <img src="/utilites/img_reader/Diagonal_3.jpg" alt="drawing" width="200"/> ---> <img src="/utilites/img_reader/Result_IMAGE_Diagonal_3.png" alt="drawing" width="200"/>
+
 
 ## Performance
 

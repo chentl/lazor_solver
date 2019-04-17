@@ -31,7 +31,8 @@ def _laser_next_block_position(x, y, vx, vy):
 
 def _trace_lasers(blocks, laser_sources):
     """ Trace lasers on board and return all laser paths.
-        **Parameters**
+
+    **Parameters**
 
         blocks: *list, list*
             A list of lists holding all blocks on board. Format should be
@@ -162,10 +163,9 @@ def _block_combinations(available_locations, num_opaque, num_reflect, num_refrac
 
 def _solve_large_board(board, print_log=True):
     """ Solve a Lazors Board.
-        **Parameters**
+    **Parameters**
 
         board: *pylazors.Board object*
-
 
     **Returns**
 

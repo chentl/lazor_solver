@@ -35,14 +35,17 @@ _font_file = os.path.join(_FONT_DIR, 'SourceCodeVariable-Roman.ttf')
 
 def write_png(board, fname, note=None):
     """
-    Write *board* as a PNG image.
+    Write a solution *board* as a PNG image.
 
-        **Parameters**
+    **Parameters**
 
         board: *pylazors.board.Board*
             The board to be exported.
+            Note: this should be a solution board returned by pylazors.solve_board()
+
         fname: *str*
             file name of the destined PNG file.
+
         note: *str, optional*
             If given, will be added at the bottom of the image.
 
