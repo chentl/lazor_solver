@@ -388,13 +388,29 @@ def pos_chk(x, y, data_grid):
 
 
 def solve_board(board, *args, **kwargs):
+    """
+    Solve a given Lazors board.
+
+    This function will check the size of the given board, choose the best
+    solving algorithm and use it to solve given board.
+
+    **Parameters**
+
+        board: *pylazors.Board object*
+
+    **Returns**
+
+        solution_board: *pylazors.Board object*
+            board for the solved maze
+    """
+
     if board.width * board.height < 15:
-        solution = _solve_board(board, *args, **kwargs)
+        solution = _solve_board(board, **kwargs)
         if solution is None:
             # fallback to _solve_large_board() when _solve_board() skips
             # solving due to too many combinations.
-            return _solve_large_board(board, *args, **kwargs)
+            return _solve_large_board(board)
         else:
             return solution
     else:
-        return _solve_large_board(board, *args, **kwargs)
+        return _solve_large_board(board)
