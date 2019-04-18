@@ -1,3 +1,9 @@
+"""
+This file contains classes used for describing a block. And some helper functions to modify a block.
+
+*Block* class is used to represent blocks in this module.
+"""
+
 from enum import IntEnum, IntFlag
 
 
@@ -35,12 +41,12 @@ class Block(IntEnum):
 
 
 def fix_block(block):
-    ''' Return fixed version of *block* '''
+    """ Return fixed version of *block* """
 
     return Block(block | BlockProperty.FIXED)
 
 
 def unfix_block(block):
-    ''' Return unfixed version of *block* '''
+    """ Return unfixed version of *block* """
 
     return Block(block & (~ BlockProperty.FIXED))
